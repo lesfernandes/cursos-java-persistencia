@@ -3,31 +3,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TestaListagem {
+public class TestaInsercao {
 
 	public static void main(String[] args) throws SQLException {
 		
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		Connection connection = connectionFactory.recuperarConexao();
-
+		
 		Statement stm = connection.createStatement();
-		stm.execute("SELECT id, nome, descricao FROM produto");
-
-		ResultSet rst = stm.getResultSet();
-
+		stm.execute("INSERT INTO produto (nome, descricao) VALUES ('Mouse', 'Mouse sem fio')", 
+				Statement.RETURN_GENERATED_KEYS);
+		
+		ResultSet rst =  stm.getGeneratedKeys();
+		
 		while (rst.next()) {
-			Integer id = rst.getInt("id");
-			System.out.println(id);
-			
-			String nome = rst.getString("nome");
-			System.out.println(nome);
-			
-			String descricao = rst.getString("descricao");
-			System.out.println(descricao);
+			Integer id = rst.getInt(1);
+			System.out.println("O id criado foi: " + id);
 		}
-
-		connection.close();
-
+		
 	}
 
 }
