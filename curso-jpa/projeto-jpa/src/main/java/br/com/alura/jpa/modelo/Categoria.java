@@ -13,6 +13,11 @@ public class Categoria {
 	private Long id;
 	private String nome;
 	
+	@Override
+	public String toString() {
+		return nome + " - " + id;
+	}
+	
 	// Hibernate precisa do construtor padrão
 	@Deprecated
 	public Categoria() {
