@@ -16,14 +16,14 @@ public class TestandoEstados {
 		conta.setAgencia(664662);
 		conta.setNumero(66266);
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contas");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("alura");
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
 		
 		// Transient -> Managed
 		// sincronização automática com o banco
-		//em.persist(conta);
+		em.persist(conta);
 		
 		// Managed -> Removed
 		// remover do banco de dados (delete)

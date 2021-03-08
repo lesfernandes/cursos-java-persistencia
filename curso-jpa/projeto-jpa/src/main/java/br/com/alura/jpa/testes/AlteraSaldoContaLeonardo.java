@@ -9,7 +9,7 @@ import br.com.alura.jpa.modelo.Conta;
 public class AlteraSaldoContaLeonardo {
 
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contas");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("alura");
 		EntityManager em = emf.createEntityManager();
 		
 		Conta contaDoLeonardo = em.find(Conta.class, 1L);
