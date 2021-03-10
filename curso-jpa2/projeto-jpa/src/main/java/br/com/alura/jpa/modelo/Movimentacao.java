@@ -12,6 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+
+@NamedQuery(name="mediaDiariaMovimentacoes", query="select new "
+		+ "br.com.alura.jpa.modelo.MediaComData(avg(m.valor), day(m.data), month(m.data))"
+		+ " from Movimentacao m group by day(m.data), month(m.data), year(m.data)")
 
 @Entity
 public class Movimentacao {
@@ -24,7 +29,7 @@ public class Movimentacao {
 	private TipoMovimentacao tipoMovimentacao;
 	private LocalDateTime data;
 	private String descricao;
-	private BigDecimal valor;
+	private BigDecimal valor2;
 	
 	@ManyToOne
 	private Conta conta;
@@ -57,11 +62,11 @@ public class Movimentacao {
 	}
 
 	public BigDecimal getValor() {
-		return valor;
+		return valor2;
 	}
 
 	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+		this.valor2 = valor;
 	}
 
 	public TipoMovimentacao getTipoMovimentacao() {
