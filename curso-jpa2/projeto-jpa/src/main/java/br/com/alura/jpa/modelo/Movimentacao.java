@@ -29,7 +29,7 @@ public class Movimentacao {
 	private TipoMovimentacao tipoMovimentacao;
 	private LocalDateTime data;
 	private String descricao;
-	private BigDecimal valor2;
+	private BigDecimal valor;
 	
 	@ManyToOne
 	private Conta conta;
@@ -62,11 +62,11 @@ public class Movimentacao {
 	}
 
 	public BigDecimal getValor() {
-		return valor2;
+		return valor;
 	}
 
 	public void setValor(BigDecimal valor) {
-		this.valor2 = valor;
+		this.valor = valor;
 	}
 
 	public TipoMovimentacao getTipoMovimentacao() {
